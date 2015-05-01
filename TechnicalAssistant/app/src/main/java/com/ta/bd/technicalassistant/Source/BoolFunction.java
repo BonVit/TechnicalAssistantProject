@@ -29,8 +29,6 @@ class BoolFunction
     }
 
     /*private static Vector<String> minimize(Vector<String> terms){
-
-
         return terms;
     }*/
 
