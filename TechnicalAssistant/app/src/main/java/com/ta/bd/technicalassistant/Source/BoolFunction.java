@@ -204,7 +204,7 @@ class BoolFunction
         return result;
     }
 
-    public String[] getTruth_table()
+    public String[] getTruthTable()
     {
         return truth_table;
     }
