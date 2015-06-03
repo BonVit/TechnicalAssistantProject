@@ -5,18 +5,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import com.ta.bd.technicalassistant.Fragments.MinimizeFragment;
 
 
 public class MainActivity extends ActionBarActivity
@@ -49,10 +46,23 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Fragment switch_fragment = new MinimizeFragment();
+
+        switch(position)
+        {
+            case 0:
+                break;
+            case 1:
+                switch_fragment = new MinimizeFragment();
+                break;
+            case 2:
+                break;
+        }
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, switch_fragment)
                 .commit();
     }
 

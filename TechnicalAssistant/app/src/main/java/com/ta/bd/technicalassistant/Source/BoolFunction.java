@@ -6,7 +6,7 @@ import java.util.Vector;
  * Created by Vitaliy on 4/28/2015.
  */
 
-class BoolFunction
+public class BoolFunction
 {
     private String[] truth_table;
     private Vector<String> dnf;
@@ -224,7 +224,7 @@ class BoolFunction
         return mdnf;
     }
 
-    BoolFunction(String function)
+    public BoolFunction(String function)
     {
         //Create truth table
         truth_table = new String [function.length()];
