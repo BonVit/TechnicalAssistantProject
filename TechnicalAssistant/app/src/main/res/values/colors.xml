@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#ff0000</color>
+    <color name="green">#008000</color>
+    <color name="spoiler_color">#ff2c4d8c</color>
+    <color name="editText_stroke_color">#ff2c4d8c</color>
+    <color name="button_color">#ffc4c4c4</color>
+    <color name="spoiler_background_color">#ffc9c9c9</color>
+    <color name="application_background_color">#ffdedede</color>
+</resources>

@@ -8,12 +8,23 @@ import java.util.Vector;
 
 public class BoolFunction
 {
+    private String function;
     private String[] truth_table;
     private Vector<String> dnf;
     private Vector<String> cnf;
     private Vector<String> mdnf;
     private String[][] mdnf_log_table;
     private Vector<String> mdnf_log;
+
+    public String[][] getMdnfLogTable()
+    {
+        return mdnf_log_table;
+    }
+
+    public Vector<String> getMdnfLog()
+    {
+        return mdnf_log;
+    }
 
     private static boolean equal(String term1, String term2)
     {
@@ -44,9 +55,9 @@ public class BoolFunction
         return result;
     }
 
-    public static Vector<String> minimize(Vector<String> terms, Vector<String> log, String[][] table)
+    public static Vector<String> minimize(Vector<String> terms, Vector<String> log, Vector<String[][]> table)
     {
-        log = new Vector<String>();
+        log.clear();
         Vector<String> tmp = new Vector<String>();
         Vector<String> pre_result;
         for(int i = 0; i < terms.size(); i++)
@@ -107,15 +118,18 @@ public class BoolFunction
             log.addElement("\n");
 
         }while(!end_of_minimization);
+        log.removeElementAt(log.size() - 1);
+        log.removeElementAt(log.size() - 1);
+
         tmp = null;
 
         //Table
-        table = new String[pre_result.size() + 1][terms.size() + 1];
-        table[0][0] = "";
+        String[][] table_tmp = new String[pre_result.size() + 1][terms.size() + 1];
+        table_tmp[0][0] = "";
         for(int i = 1; i < pre_result.size() + 1; i++)
-            table[i][0] = pre_result.get(i - 1);
+            table_tmp[i][0] = pre_result.get(i - 1);
         for(int i = 1; i < terms.size() + 1; i++)
-            table[0][i] = terms.get(i - 1);
+            table_tmp[0][i] = terms.get(i - 1);
         int index = -1;
         for(int i = 1; i < terms.size() + 1; i++)
         {
@@ -123,61 +137,53 @@ public class BoolFunction
             for(int j = 1; j < pre_result.size() + 1; j++)
             {
                 boolean is_sub_term = true;
-                table[j][i] = "";
+                table_tmp[j][i] = "";
                 for(int k = 0; k < terms.firstElement().length(); k++)
-                    if(!((table[j][0].charAt(k) == '-') || (table[j][0].charAt(k) == table[0][i].charAt(k))))
+                    if(!((table_tmp[j][0].charAt(k) == '-') || (table_tmp[j][0].charAt(k) == table_tmp[0][i].charAt(k))))
                         is_sub_term = false;
                 if(is_sub_term)
                     if(index == -1)
                     {
                         index = j;
-                        table[j][i] = "+";
+                        table_tmp[j][i] = "+";
                     }
                     else
                     {
-                        table[j][i] = "#";
-                        table[index][i] = "#";
+                        table_tmp[j][i] = "#";
+                        table_tmp[index][i] = "#";
                     }
             }
         }
-
-        for(int i = 0; i < table.length; i++)
-        {
-            for(int j = 0; j < table[i].length; j++)
-            {
-                System.out.print(table[i][j] + " | ");
-            }
-            System.out.println();
-        }
+        table.addElement(table_tmp);
 
         //Different mdnf from table
         Vector<String> result = new Vector<String>();
         Vector<Vector<String>> terms_not_in_core = new Vector<Vector<String>>();
         String core = new String("");
-        boolean is_colomn_in_core[] = new boolean[table[0].length - 1];
-        for(int i = 1; i < table.length; i++)
-            for(int j = 1; j < table[i].length; j++)
+        boolean is_colomn_in_core[] = new boolean[table_tmp[0].length - 1];
+        for(int i = 1; i < table_tmp.length; i++)
+            for(int j = 1; j < table_tmp[i].length; j++)
             {
-                if(table[i][j] == "+")
-                    if (!core.contains(table[i][0]))
+                if(table_tmp[i][j] == "+")
+                    if (!core.contains(table_tmp[i][0]))
                     {
                         if(!core.isEmpty())
                             core += " + ";
-                        core += table[i][0];
+                        core += table_tmp[i][0];
                     }
             }
-        for(int i = 1; i < table.length; i++)
-            if(core.contains(table[i][0]))
-                for(int j = 1; j < table[i].length; j++)
-                    if(table[i][j] == "+" || table[i][j] == "#")
+        for(int i = 1; i < table_tmp.length; i++)
+            if(core.contains(table_tmp[i][0]))
+                for(int j = 1; j < table_tmp[i].length; j++)
+                    if(table_tmp[i][j] == "+" || table_tmp[i][j] == "#")
                         is_colomn_in_core[j - 1] = true;
         for(int i = 0; i < is_colomn_in_core.length; i++)
             if(!is_colomn_in_core[i])
             {
                 terms_not_in_core.addElement(new Vector<String>());
-                for(int j = 1; j < table.length; j++)
-                    if (table[j][i + 1] == "#")
-                        terms_not_in_core.lastElement().addElement(table[j][0]);
+                for(int j = 1; j < table_tmp.length; j++)
+                    if (table_tmp[j][i + 1] == "#")
+                        terms_not_in_core.lastElement().addElement(table_tmp[j][0]);
             }
         int indexs[] = new int [terms_not_in_core.size()];
         if(indexs.length > 0)
@@ -224,20 +230,23 @@ public class BoolFunction
         return mdnf;
     }
 
-    public BoolFunction(String function)
+    public String getFunction() { return function; }
+
+    public BoolFunction(String func)
     {
+        function = new String(func);
         //Create truth table
-        truth_table = new String [function.length()];
+        truth_table = new String [func.length()];
         for(int i = 0; i < truth_table.length; i++)
             truth_table[i] = "";
-        for(int i = 0, divider = function.length() / 2; i < Math.log(function.length()) / Math.log(2); i++, divider /= 2)
-            for(int j = 0; j < function.length(); j++)
+        for(int i = 0, divider = func.length() / 2; i < Math.log(func.length()) / Math.log(2); i++, divider /= 2)
+            for(int j = 0; j < func.length(); j++)
                 if(((j / divider) & 1) == 0)
                     truth_table[j] += '0';
                 else
                     truth_table[j] += '1';
-        for(int i = 0; i < function.length(); i++)
-            truth_table[i] += function.charAt(i);
+        for(int i = 0; i < func.length(); i++)
+            truth_table[i] += func.charAt(i);
 
         //DNF and CNF
         dnf = new Vector<String>();
@@ -249,8 +258,10 @@ public class BoolFunction
                 cnf.addElement(tmp.substring(0, tmp.length() - 1));
 
         //MDNF
-        mdnf_log = null;
+        mdnf_log = new Vector<String>();
         mdnf_log_table = null;
-        mdnf = new Vector<String>(minimize(dnf, mdnf_log, mdnf_log_table));
+        Vector<String[][]> buffer = new Vector<String[][]>();
+        mdnf = new Vector<String>(minimize(dnf, mdnf_log, buffer));
+        mdnf_log_table = buffer.firstElement();
     }
 }

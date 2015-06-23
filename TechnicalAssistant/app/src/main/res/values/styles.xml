@@ -5,4 +5,57 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Spoiler -->
+    <style name="textView_spoiler">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textColor">@color/spoiler_color</item>
+    </style>
+
+    <!-- Spoiler text -->
+    <style name="textView_spoiler_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">0</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:background">@drawable/spoiler_text</item>
+    </style>
+
+    <!-- EditText input -->
+    <style name="editText_input">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:maxWidth">200dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:enabled">true</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:editable">true</item>
+        <item name="android:clickable">false</item>
+        <item name="android:background">@drawable/edit_text_input</item>
+    </style>
+
+    //Button
+    <style name="button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button</item>
+    </style>
+
+    //EditText output
+    <style name="editText_output">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:enabled">true</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:editable">true</item>
+        <item name="android:clickable">false</item>
+        <item name="android:background">@drawable/edit_text_input</item>
+    </style>
+
 </resources>

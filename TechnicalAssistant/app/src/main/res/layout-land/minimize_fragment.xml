@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_input_bool_function"
+            android:background="#ff97a8ff"
+            android:clickable="false"
+            android:editable="true"
+            android:enabled="true"
+            android:maxLines="1"
+            android:minLines="1"
+            android:minWidth="200dp"
+            android:nestedScrollingEnabled="false"
+            android:scrollHorizontally="true"
+            android:hint="@string/minimize_input_bool_function_hint"
+            android:singleLine="true"
+            android:maxWidth="200dp"
+            android:layout_below="@+id/textView_input"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_mdnf"
+            android:id="@+id/button_minimize"
+            android:enabled="false"
+            android:layout_below="@+id/textView_minimize_input_count"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/minimize_hint"
+            android:id="@+id/textView_minimize_hint"
+            android:maxLines="1"
+            android:enabled="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:clickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/minimize_hint_text"
+            android:id="@+id/textView_minimize_hint_text"
+            android:layout_below="@+id/textView_minimize_hint"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:maxLines="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/minimize_input"
+            android:id="@+id/textView_input"
+            android:layout_below="@+id/textView_minimize_hint_text"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textView_minimize_input_count"
+            android:layout_below="@+id/editText_input_bool_function"
+            android:layout_alignLeft="@+id/editText_input_bool_function"
+            android:layout_alignStart="@+id/editText_input_bool_function"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_minimization_result"
+            android:background="#ff97a8ff"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="true"
+            android:minLines="1"
+            android:nestedScrollingEnabled="false"
+            android:scrollHorizontally="true"
+            android:saveEnabled="true"
+            android:singleLine="false"
+            android:selectAllOnFocus="true"
+            android:layout_below="@+id/button_minimize"
+            android:layout_toRightOf="@+id/textView_minimize_hint_text"
+            android:layout_toLeftOf="@+id/space"
+            android:layout_toStartOf="@+id/space"
+            android:inputType="none"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/minimization_solution"
+            android:id="@+id/textView_minimization_solution"
+            android:maxLines="1"
+            android:enabled="true"
+            android:clickable="true"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/editText_minimization_result"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:visibility="visible"/>
+
+        <Space
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/space"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontalScrollView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView_minimization_solution"
+            android:layout_alignParentEnd="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/minimize_hint_text"
+                android:id="@+id/textView_minimization_solution_text"
+                android:maxLines="0"/>
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+</ScrollView>

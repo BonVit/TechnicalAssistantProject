@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TechnicalAssistant</string>
 
-    <string name="title_section1">Section 1</string>
+    <string name="title_section1">Main</string>
     <string name="title_section2">Minimize</string>
     <string name="title_section3">Section 3</string>
 
@@ -12,7 +12,25 @@
 
     <string name="action_settings">Settings</string>
 
-    //minimize layout
+    //MinimizeFragment
+    <string name="button_mdnf">MDNF</string>
+    <string name="minimize_hint"><u>Hint</u></string>
+    <string name="minimize_hint_text">How to\nuse it</string>
+    <string name="minimize_input">Enter your function:</string>
+    <string name="minimize_input_count">Symbols entered: </string>
+    <string name="minimize_input_bool_function_hint">Only 1 and 0</string>
+    <string name="minimization_result">Result:</string>
+    <string name="minimization_solution"><u>Solution</u></string>
+    <string name="mdnf">MDNF</string>
+    <string name="dnf">DNF</string>
+    //Solution
+    <string name="minimization_entered_function">Entered function: </string>
+    <string name="minimization_truth_table">Truth table:\n</string>
+    <string name="minimization">\n<b>Minimization:\n</b></string>
+    <string name="minimization_terms"><b>Terms:\n</b></string>
+    <string name="minimization_glue"> glue:\n</string>
+    <string name="quaine_matrix">\n<b>Implicant chart:\n</b></string>
+
 
 
 </resources>

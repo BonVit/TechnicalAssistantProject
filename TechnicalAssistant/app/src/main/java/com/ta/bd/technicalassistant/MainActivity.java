@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.ta.bd.technicalassistant.Fragments.MainFragment;
 import com.ta.bd.technicalassistant.Fragments.MinimizeFragment;
 
 
@@ -46,11 +47,12 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Fragment switch_fragment = new MinimizeFragment();
+        Fragment switch_fragment = new MainFragment();
 
         switch(position)
         {
             case 0:
+                switch_fragment = new  MainFragment();
                 break;
             case 1:
                 switch_fragment = new MinimizeFragment();
@@ -143,7 +145,8 @@ public class MainActivity extends ActionBarActivity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+                                 Bundle savedInstanceState)
+        {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
