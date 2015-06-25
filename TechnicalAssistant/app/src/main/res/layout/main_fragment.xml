@@ -12,4 +12,5 @@
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.11"/>
+
 </LinearLayout>

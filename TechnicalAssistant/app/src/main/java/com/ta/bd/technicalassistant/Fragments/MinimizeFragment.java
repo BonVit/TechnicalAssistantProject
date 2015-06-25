@@ -6,11 +6,14 @@ import android.text.Editable;
 import android.text.Selection;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,6 +52,7 @@ public class MinimizeFragment extends Fragment
         button_mdnf = (Button) view.findViewById(R.id.button_minimize);
         minimize_hint = (TextView) view.findViewById(R.id.textView_minimize_hint);
         minimize_hint_text = (TextView) view.findViewById(R.id.textView_minimize_hint_text);
+        minimize_hint_text.setMovementMethod(LinkMovementMethod.getInstance());
         minimization_solution = (TextView) view.findViewById(R.id.textView_minimization_solution);
         minimization_solution_text = (TextView) view.findViewById(R.id.textView_minimization_solution_text);
 
@@ -104,6 +108,28 @@ public class MinimizeFragment extends Fragment
             }
         });
 
+        //MDNF button on click animation
+        button_mdnf.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                button_mdnf.callOnClick();
+                int event_action = event.getAction();
+                switch (event_action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        button_mdnf.setBackground(getResources().getDrawable(R.drawable.button_on_down));
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        button_mdnf.setBackground(getResources().getDrawable(R.drawable.button));
+                        return false;
+                }
+                return false;
+            }
+        });
+
+        //MDNF button
         button_mdnf.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -114,10 +140,8 @@ public class MinimizeFragment extends Fragment
                 bool_function = new BoolFunction(editText_bool_function.getText().toString());
 
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
-                {
                     editText_minimization_result.setText(editText_minimization_result.getText().toString()
-                            + "\n" + getString(R.string.mdnf) + "[" + i + "] = " + bool_function.getMdnf().elementAt(i));
-                }
+                            + "\n" + getString(R.string.mdnf) + "[" + (i + 1) + "] = " + bool_function.getMdnf().elementAt(i));
 
                 minimization_solution.setVisibility(View.VISIBLE);
 
@@ -205,7 +229,6 @@ public class MinimizeFragment extends Fragment
                     set_text += getString(R.string.mdnf) + "[" + (i + 1) + "] = " + bool_function.getMdnf().elementAt(i) + "\n";
 
                 minimization_solution_text.setText(set_text);
-                minimization_solution_text.setMaxLines(0);
             }
         });
 
@@ -217,13 +240,13 @@ public class MinimizeFragment extends Fragment
                 if (minimize_hint_text.getMaxLines() == 0)
                 {
                     minimize_hint_text.setMaxLines(Integer.MAX_VALUE);
-                    minimize_hint.setText(getString(R.string.minimize_hint));
+                    minimize_hint_text.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
+                    minimize_hint.setText(getString(R.string.hint));
                     minimize_hint.setBackground(getResources().getDrawable(R.drawable.spoiler));
-                }
-                else
+                } else
                 {
                     minimize_hint_text.setMaxLines(0);
-                    SpannableString spanString = new SpannableString(getString(R.string.minimize_hint));
+                    SpannableString spanString = new SpannableString(getString(R.string.hint));
                     spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
                     minimize_hint.setText(spanString);
                     minimize_hint.setBackground(getResources().getDrawable(R.color.application_background_color));
@@ -238,6 +261,7 @@ public class MinimizeFragment extends Fragment
             {
                 if (minimization_solution_text.getMaxLines() == 0)
                 {
+                    minimization_solution_text.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
                     minimization_solution_text.setMaxLines(Integer.MAX_VALUE);
                     minimization_solution.setText(getString(R.string.minimization_solution));
                     minimization_solution.setBackground(getResources().getDrawable(R.drawable.spoiler));

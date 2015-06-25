@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.ta.bd.technicalassistant.Fragments.MainFragment;
 import com.ta.bd.technicalassistant.Fragments.MinimizeFragment;
+import com.ta.bd.technicalassistant.Fragments.NormalFormsFragment;
 
 
 public class MainActivity extends ActionBarActivity
@@ -52,12 +53,13 @@ public class MainActivity extends ActionBarActivity
         switch(position)
         {
             case 0:
-                switch_fragment = new  MainFragment();
+                switch_fragment = new MainFragment();
                 break;
             case 1:
                 switch_fragment = new MinimizeFragment();
                 break;
             case 2:
+                switch_fragment = new NormalFormsFragment();
                 break;
         }
 

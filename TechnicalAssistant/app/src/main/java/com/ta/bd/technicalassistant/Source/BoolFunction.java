@@ -232,6 +232,37 @@ public class BoolFunction
 
     public String getFunction() { return function; }
 
+    public BoolFunction(String func, boolean choose)
+    {
+        function = new String(func);
+        //Create truth table
+        truth_table = new String [func.length()];
+        for(int i = 0; i < truth_table.length; i++)
+            truth_table[i] = "";
+        for(int i = 0, divider = func.length() / 2; i < Math.log(func.length()) / Math.log(2); i++, divider /= 2)
+            for(int j = 0; j < func.length(); j++)
+                if(((j / divider) & 1) == 0)
+                    truth_table[j] += '0';
+                else
+                    truth_table[j] += '1';
+        for(int i = 0; i < func.length(); i++)
+            truth_table[i] += func.charAt(i);
+
+        //DNF and CNF
+        dnf = new Vector<String>();
+        cnf = new Vector<String>();
+        for(String tmp : truth_table)
+            if(tmp.charAt(tmp.length() - 1) == '1')
+                dnf.addElement(tmp.substring(0, tmp.length() - 1));
+            else
+                cnf.addElement(tmp.substring(0, tmp.length() - 1));
+
+        //NULL
+        mdnf_log = null;
+        mdnf_log_table = null;
+        mdnf = null;
+    }
+
     public BoolFunction(String func)
     {
         function = new String(func);

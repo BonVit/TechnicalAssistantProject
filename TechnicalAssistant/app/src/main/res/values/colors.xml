@@ -7,4 +7,5 @@
     <color name="button_color">#ffc4c4c4</color>
     <color name="spoiler_background_color">#ffc9c9c9</color>
     <color name="application_background_color">#ffdedede</color>
+    <color name="links_color">#ff468dd5</color>
 </resources>

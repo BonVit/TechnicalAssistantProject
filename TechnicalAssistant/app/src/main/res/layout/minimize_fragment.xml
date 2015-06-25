@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/minimize_hint"
+            android:text="@string/hint"
             android:id="@+id/textView_minimize_hint"
             android:maxLines="1"
             android:enabled="true"
