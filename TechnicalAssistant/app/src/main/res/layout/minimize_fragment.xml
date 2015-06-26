@@ -5,15 +5,14 @@
             android:background="@color/application_background_color">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:orientation="vertical" android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-        >
+                    android:layout_height="wrap_content">
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText_input_bool_function"
-            android:hint="@string/minimize_input_bool_function_hint"
-            android:layout_below="@+id/textView_input"
+            android:hint="@string/input_bool_function_hint"
+            android:layout_below="@+id/textView_minimize_input"
             android:layout_centerHorizontal="true"
             style="@style/editText_input"
             android:layout_margin="2dp"/>
@@ -21,7 +20,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_mdnf"
+            android:text="@string/mdnf"
             android:id="@+id/button_minimize"
             android:enabled="false"
             android:layout_below="@+id/textView_minimize_input_count"
@@ -60,8 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/minimize_input"
-            android:id="@+id/textView_input"
+            android:text="@string/enter_function"
+            android:id="@+id/textView_minimize_input"
             android:layout_below="@+id/textView_minimize_hint_text"
             android:layout_centerHorizontal="true"/>
 
@@ -89,7 +88,6 @@
             android:inputType="none"
             android:visibility="invisible"
             android:layout_below="@+id/space3"
-            android:layout_toLeftOf="@+id/space"
             android:layout_toRightOf="@+id/space2"
             android:layout_toEndOf="@+id/space2"
             android:autoText="false"
@@ -111,14 +109,6 @@
             android:visibility="invisible"
             style="@style/textView_spoiler"/>
 
-        <Space
-                android:layout_width="10dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/space"/>
-
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +117,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView_minimization_solution"
-            android:layout_alignParentEnd="false"
             android:background="@color/application_background_color">
 
             <TextView
@@ -146,15 +135,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/space"
             android:id="@+id/space2"/>
 
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:layout_below="@+id/button_minimize"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/space3"/>
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_below="@+id/button_minimize"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/space3"/>
 
     </RelativeLayout>
 </ScrollView>

@@ -2,25 +2,26 @@
     //Application
     <string name="app_name">TechnicalAssistant</string>
     <string name="hint"><u>Hint</u></string>
+    <string name="symbols_entered">Symbols entered: </string>
+    <string name="enter_function">Enter your function:</string>
+    <string name="input_bool_function_hint">Only 1 and 0</string>
+    <string name="dnf">DNF</string>
+    <string name="cnf">CNF</string>
+    <string name="result">Result:</string>
 
-    //MainActivity and navigationDrawerFragment
+    //MainActivity and NavigationDrawerFragment
     <string name="title_section1">Main</string>
     <string name="title_section2">Minimize</string>
     <string name="title_section3">Normal forms</string>
+    <string name="title_section4">Build graph</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
 
     //MinimizeFragment
-    <string name="button_mdnf">MDNF</string>
-    <string name="minimize_input">Enter your function:</string>
-    <string name="minimize_input_count">Symbols entered: </string>
-    <string name="minimize_input_bool_function_hint">Only 1 and 0</string>
-    <string name="minimization_result">Result:</string>
     <string name="minimization_solution"><u>Solution</u></string>
     <string name="mdnf">MDNF</string>
-    <string name="dnf">DNF</string>
     //Solution
     <string name="minimization_entered_function">Entered function: </string>
     <string name="minimization_truth_table">Truth table:\n</string>
@@ -28,4 +29,8 @@
     <string name="minimization_terms"><b>Terms:\n</b></string>
     <string name="minimization_glue"> glue:\n</string>
     <string name="quaine_matrix">\n<b>Implicant chart:\n</b></string>
+
+    //NormalFormsFragment
+    <string name="button_normal_forms">Start</string>
+    <string name="normal_forms_truth_table">Truth table:</string>
 </resources>

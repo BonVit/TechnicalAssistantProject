@@ -57,7 +57,7 @@ public class MinimizeFragment extends Fragment
         minimization_solution_text = (TextView) view.findViewById(R.id.textView_minimization_solution_text);
 
         minimize_input_count = (TextView) view.findViewById(R.id.textView_minimize_input_count);
-        minimize_input_count.setText(R.string.minimize_input_count);
+        minimize_input_count.setText(R.string.symbols_entered);
         minimize_input_count.append("0");
         minimize_input_count.setTextColor(getResources().getColor(R.color.red));
 
@@ -103,7 +103,7 @@ public class MinimizeFragment extends Fragment
                     minimize_input_count.setTextColor(getResources().getColor(R.color.red));
                     button_mdnf.setEnabled(false);
                 }
-                minimize_input_count.setText(R.string.minimize_input_count);
+                minimize_input_count.setText(R.string.symbols_entered);
                 minimize_input_count.append(((Integer) editText_bool_function.getText().length()).toString());
             }
         });
@@ -114,12 +114,12 @@ public class MinimizeFragment extends Fragment
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
-                button_mdnf.callOnClick();
                 int event_action = event.getAction();
                 switch (event_action)
                 {
                     case MotionEvent.ACTION_DOWN:
                         button_mdnf.setBackground(getResources().getDrawable(R.drawable.button_on_down));
+                        button_mdnf.callOnClick();
                         return true;
                     case MotionEvent.ACTION_UP:
                         button_mdnf.setBackground(getResources().getDrawable(R.drawable.button));
@@ -136,7 +136,7 @@ public class MinimizeFragment extends Fragment
             public void onClick(View v)
             {
                 editText_minimization_result.setVisibility(View.VISIBLE);
-                editText_minimization_result.setText(R.string.minimization_result);
+                editText_minimization_result.setText(R.string.result);
                 bool_function = new BoolFunction(editText_bool_function.getText().toString());
 
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
@@ -224,7 +224,7 @@ public class MinimizeFragment extends Fragment
                 }
 
                 //Result
-                set_text += "\n" + getString(R.string.minimization_result) + "\n";
+                set_text += "\n" + getString(R.string.result) + "\n";
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
                     set_text += getString(R.string.mdnf) + "[" + (i + 1) + "] = " + bool_function.getMdnf().elementAt(i) + "\n";
 

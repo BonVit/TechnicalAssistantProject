@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //MinimizeFragment
+    <string name="minimize_hint_text">
+        It is a boolean function minimization. This service is using Quaine.\n
+        <b>\nHow to use it:\n</b>
+            1) put only 1 and 0;\n
+            2) number of inputed symbols must be a power of 2 (2, 4, 8, 16, etc.);\n
+            3) notice that X is 1, inverse X (NOT X) is 0 and if there is no such X (it can be lost due to minimization) is -.\n
+        <b>\nExamples of input data:\n</b>
+            1) 0100;\n
+            2) 01101001;\n
+            3) 0101000101001101.\n
+        <b>\nExamples of output data or how to understand it (! - means inverse):\n</b>
+            1) (!X2) * (!X1) + X1 * (!X0) is 00- + -10;\n
+            2) X3 * X2 * X1 * (!X0) + X2 * (!X1) is 1110 + -10-;\n
+            3) X1 * X0 + X2 * (!X0) + X3 * (!X2) * (!X1) is --11 + -1-0 + 100-.\n
+        \nYou can read about algortihm on <a href="https://uk.wikipedia.org/wiki/Метод_Куайна">wikipedia</a>.\n
+        If you have any questions or you noticed that it doesn\'t work correctly,
+            <a href="mailto:bonarv96@gmail.com">email me</a> please :)
+    </string>
+
+    //NormalFormsFragment
+    <string name="normal_forms_hint_text">
+        It is a service for finding DNF and CNF of boolean function.\n
+        <b>\nHow to use it:\n</b>
+            1) put only 1 and 0;\n
+            2) number of inputed symbols must be a power of 2 (2, 4, 8, 16, etc.);\n
+            3) notice that X is 1, inverse X (NOT X) is 0.\n
+        <b>\nExamples of input data:\n</b>
+            1) 0100;\n
+            2) 01101001;\n
+            3) 0101000101001101.\n
+        <b>\nExamples of output data or how to understand it (! - means inverse):\n</b>
+            1) (!X2 + X1 + X0) * (X2 + !X1 + !X0) * (X2 + !X1 + !X0) is (0 + 1 + 1) * (1 + 0 + 0) * (1 + 0 + 0);\n
+            2) X1 * X0 + !X1 * !X0 is 11 + 00;\n
+            3) X3 * X2 * !X1 * X0 is 1101.\n
+        \nYou can watch a video about DNF and CNF <a href="http://carassonet.org/Sergio/www.sergiouniversity.org/2011/07/13/from-truth-table-to-dnf-or-cnf/">here</a>.\n
+        If you have any questions or you noticed that it doesn\'t work correctly,
+            <a href="mailto:bonarv96@gmail.com">email me</a> please :)
+    </string>
+</resources>

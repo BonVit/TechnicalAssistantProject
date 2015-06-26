@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/application_background_color">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/hint"
+            android:id="@+id/textView_normal_forms_hint"
+            android:maxLines="1"
+            android:enabled="true"
+            android:clickable="true"
+            style="@style/textView_spoiler"
+            android:linksClickable="false"
+            android:longClickable="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/normal_forms_hint_text"
+            android:id="@+id/textView_normal_forms_hint_text"
+            android:maxLines="0"
+            style="@style/textView_spoiler_text"
+            android:autoLink="none"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/enter_function"
+            android:id="@+id/textView_normal_forms_input"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_normal_forms_input"
+            android:hint="@string/input_bool_function_hint"
+            style="@style/editText_input"
+            android:layout_margin="2dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textView_normal_forms_input_count"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_normal_forms"
+            android:id="@+id/button_normal_forms"
+            android:enabled="false"
+            style="@style/button"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/normal_forms_truth_table"
+            android:id="@+id/textView_normal_forms_truth_table"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontalScrollView"
+            android:background="@color/application_background_color"
+            android:layout_gravity="center_horizontal">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tableLayout_truth_table">
+            </TableLayout>
+        </HorizontalScrollView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="20">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText_normal_forms_result"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="true"
+                android:minLines="1"
+                android:nestedScrollingEnabled="false"
+                android:scrollHorizontally="true"
+                android:saveEnabled="false"
+                android:singleLine="false"
+                android:selectAllOnFocus="false"
+                android:inputType="none"
+                android:visibility="invisible"
+                android:autoText="false"
+                style="@style/editText_output"
+                android:layout_weight="18"
+                android:layout_gravity="center_horizontal"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -255,7 +255,15 @@ public class BoolFunction
             if(tmp.charAt(tmp.length() - 1) == '1')
                 dnf.addElement(tmp.substring(0, tmp.length() - 1));
             else
-                cnf.addElement(tmp.substring(0, tmp.length() - 1));
+            {
+                String buffer = new String("");
+                for(int j = 0; j < tmp.length() - 1; j++)
+                    if(tmp.charAt(j) == '1')
+                        buffer += '0';
+                    else
+                        buffer += '1';
+                cnf.addElement(buffer);
+            }
 
         //NULL
         mdnf_log = null;
@@ -286,7 +294,15 @@ public class BoolFunction
             if(tmp.charAt(tmp.length() - 1) == '1')
                 dnf.addElement(tmp.substring(0, tmp.length() - 1));
             else
-                cnf.addElement(tmp.substring(0, tmp.length() - 1));
+            {
+                String buffer = new String("");
+                for(int j = 0; j < tmp.length() - 1; j++)
+                    if(tmp.charAt(j) == '1')
+                        buffer += '0';
+                    else
+                        buffer += '1';
+                cnf.addElement(buffer);
+            }
 
         //MDNF
         mdnf_log = new Vector<String>();

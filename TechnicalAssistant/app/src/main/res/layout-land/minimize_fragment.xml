@@ -19,16 +19,16 @@
             android:minWidth="200dp"
             android:nestedScrollingEnabled="false"
             android:scrollHorizontally="true"
-            android:hint="@string/minimize_input_bool_function_hint"
+            android:hint="@string/input_bool_function_hint"
             android:singleLine="true"
             android:maxWidth="200dp"
-            android:layout_below="@+id/textView_input"
+            android:layout_below="@+id/textView_minimize_input"
             android:layout_centerHorizontal="true"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_mdnf"
+            android:text="@string/mdnf"
             android:id="@+id/button_minimize"
             android:enabled="false"
             android:layout_below="@+id/textView_minimize_input_count"
@@ -63,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/minimize_input"
-            android:id="@+id/textView_input"
+            android:text="@string/enter_function"
+            android:id="@+id/textView_minimize_input"
             android:layout_below="@+id/textView_minimize_hint_text"
             android:layout_centerHorizontal="true"/>
 
