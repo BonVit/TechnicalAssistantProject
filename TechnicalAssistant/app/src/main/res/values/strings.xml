@@ -33,4 +33,13 @@
     //NormalFormsFragment
     <string name="button_normal_forms">Start</string>
     <string name="normal_forms_truth_table">Truth table:</string>
+
+    //GraphFragment
+    <string name="input_equation">Enter function</string>
+    <string name="y" translatable="false">y = </string>
+    <string name="draw">Draw</string>
+    <string name="enter_limits">Enter limits:</string>
+    <string name="limit1" translatable="false">-10</string>
+    <string name="limit2" translatable="false">10</string>
+    <string name="invalid_function">Invalid function!</string>
 </resources>

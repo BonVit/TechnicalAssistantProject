@@ -33,4 +33,8 @@
     //NormalFormsFragment
     <string name="button_normal_forms">Старт</string>
     <string name="normal_forms_truth_table">Таблиця істинності:</string>
+    <string name="draw">Малювати</string>
+    <string name="enter_limits">Введіть межі:</string>
+    <string name="input_equation">Введіть функцію</string>
+    <string name="invalid_function">Неправильна функція!</string>
 </resources>

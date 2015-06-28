@@ -39,4 +39,37 @@
         If you have any questions or you noticed that it doesn\'t work correctly,
             <a href="mailto:bonarv96@gmail.com">email me</a> please :)
     </string>
+
+    //GraphFragment
+    <string name="graph_hint_text">
+        It is a service for drawing your function.\n
+        <b>Commands:\n</b>
+        - +: plus;\n
+        - -: minus;\n
+        - /: division;\n
+        - *: multiply;\n
+        - ^: raise to the power (x^5);\n
+        - abs: absolute value;\n
+        - acos: arc cosine;\n
+        - asin: arc sine;\n
+        - atan: arc tangent;\n
+        - cbrt: cubic root;\n
+        - ceil: nearest upper integer;\n
+        - cos: cosine;\n
+        - cosh: hyperbolic cosine;\n
+        - exp: euler\'s number raised to the power (e^x);\n
+        - floor: nearest lower integer;\n
+        - log: logarithmus naturalis (base e);\n
+        - log10: logarithm (base 10);\n
+        - log2: logarithm (base 2);\n
+        - sin: sine;\n
+        - sinh: hyperbolic sine;\n
+        - sqrt: square root;\n
+        - tan: tangent;\n
+        - tanh: hyperbolic tangent.\n
+        <b>Examples:\n</b>
+        sin(x), cos(x), x^2 etc.\n
+        If you have any questions or you noticed that it doesn\'t work correctly,
+            <a href="mailto:bonarv96@gmail.com">email me</a> please :)
+    </string>
 </resources>
