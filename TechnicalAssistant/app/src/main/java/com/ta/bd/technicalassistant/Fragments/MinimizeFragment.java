@@ -71,27 +71,12 @@ public class MinimizeFragment extends Fragment
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
-                //Type only 1 and 0
-                editText_bool_function.setFocusable(true);
-                if (editText_bool_function.getText().toString().length() == 0)
-                    return;
 
-                String temp = "";
-                for (int i = 0; i < editText_bool_function.getText().toString().length(); i++)
-                    if (editText_bool_function.getText().toString().charAt(i) == '1' ||
-                            editText_bool_function.getText().toString().charAt(i) == '0')
-                        temp += editText_bool_function.getText().toString().charAt(i);
-
-                if (temp.length() != editText_bool_function.getText().toString().length())
-                    editText_bool_function.setText(temp);
             }
 
             @Override
             public void afterTextChanged(Editable s)
             {
-                //Set cursor to the end
-                Selection.setSelection((Editable) editText_bool_function.getText(), editText_bool_function.getText().length());
-
                 //Minimization button enable control and count entered symbols
                 double check_length = Math.log(editText_bool_function.getText().length()) / Math.log(2);
                 if (check_length == (int) check_length && editText_bool_function.getText().length() > 1)

@@ -3,6 +3,7 @@ package com.ta.bd.technicalassistant.Fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,7 +22,6 @@ import com.ta.bd.technicalassistant.R;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
-import net.objecthunter.exp4j.ValidationResult;
 
 import java.util.Vector;
 
@@ -31,6 +31,7 @@ import static junit.framework.Assert.assertTrue;
 /**
  * Created by Vitaliy on 6/26/2015.
  */
+
 public class GraphFragment extends Fragment
 {
     final double STEP = 0.2;
@@ -55,6 +56,7 @@ public class GraphFragment extends Fragment
         graphView = (GraphView) view.findViewById(R.id.graph);
         textView_hint = (TextView) view.findViewById(R.id.textView_graph_hint);
         textView_hint_text = (TextView) view.findViewById(R.id.textView_graph_hint_text);
+        textView_hint_text.setMovementMethod(LinkMovementMethod.getInstance());
         button = (Button) view.findViewById(R.id.button_graph);
         editText_input = (EditText) view.findViewById(R.id.editText_graph);
         editText_limit1 = (EditText) view.findViewById(R.id.editText_graph_limit1);
@@ -96,7 +98,7 @@ public class GraphFragment extends Fragment
             {
                 if (editText_input.getText().toString().length() == 0)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_equation) + "!", Toast.LENGTH_SHORT)
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_function) + "!", Toast.LENGTH_SHORT)
                             .show();
                     return false;
                 }
@@ -156,7 +158,7 @@ public class GraphFragment extends Fragment
                     return;
                 }
 
-                addSerie(graphView, expression.firstElement(), limit1, limit2);
+                addSeries(graphView, expression.firstElement(), limit1, limit2);
 
                 graphView.getViewport().setMinX(limit1);
                 graphView.getViewport().setMaxX(limit2);
@@ -166,7 +168,7 @@ public class GraphFragment extends Fragment
         return view;
     }
 
-    private void addSerie(GraphView graphView, Expression expression, double limit1, double limit2)
+    private void addSeries(GraphView graphView, Expression expression, double limit1, double limit2)
     {
         graphView.removeAllSeries();
 

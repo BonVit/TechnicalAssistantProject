@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/application_background_color">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:weightSum="1"
+              android:background="@color/application_background_color">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/hint"
+        android:id="@+id/textView_equation_hint"
+        android:maxLines="1"
+        android:enabled="true"
+        android:clickable="true"
+        style="@style/textView_spoiler"
+        android:linksClickable="false"
+        android:longClickable="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/graph_hint_text"
+            android:id="@+id/textView_equation_hint_text"
+            android:maxLines="0"
+            style="@style/textView_spoiler_text"
+            android:autoLink="none"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/enter_equation"
+        android:id="@+id/textView_equation_input"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:background="@color/application_background_color"
+        android:weightSum="12">
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_equation"
+            android:hint="@string/input_equation"
+            style="@style/editText_input"
+            android:layout_margin="2dp"
+            android:layout_weight="8"
+            android:width="0dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=" = 0"
+            android:width="0dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:id="@+id/textView2"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solve"
+        android:id="@+id/button_equation"
+        style="@style/button"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
+</ScrollView>

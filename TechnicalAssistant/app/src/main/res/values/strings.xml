@@ -14,6 +14,7 @@
     <string name="title_section2">Minimize</string>
     <string name="title_section3">Normal forms</string>
     <string name="title_section4">Build graph</string>
+    <string name="title_section5">Solve equation</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -35,11 +36,16 @@
     <string name="normal_forms_truth_table">Truth table:</string>
 
     //GraphFragment
-    <string name="input_equation">Enter function</string>
+    <string name="input_function">Enter function</string>
     <string name="y" translatable="false">y = </string>
     <string name="draw">Draw</string>
     <string name="enter_limits">Enter limits:</string>
     <string name="limit1" translatable="false">-10</string>
     <string name="limit2" translatable="false">10</string>
     <string name="invalid_function">Invalid function!</string>
+
+    //EquationFragment
+    <string name="enter_equation">Enter your equation:</string>
+    <string name="input_equation">Enter equation</string>
+    <string name="solve">Solve</string>
 </resources>

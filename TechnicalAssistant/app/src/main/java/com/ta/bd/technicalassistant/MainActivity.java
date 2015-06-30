@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.ta.bd.technicalassistant.Fragments.EquationFragment;
 import com.ta.bd.technicalassistant.Fragments.GraphFragment;
 import com.ta.bd.technicalassistant.Fragments.MainFragment;
 import com.ta.bd.technicalassistant.Fragments.MinimizeFragment;
@@ -64,6 +65,10 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 3:
                 switch_fragment = new GraphFragment();
+                break;
+            case 4:
+                switch_fragment = new EquationFragment();
+                break;
         }
 
         // update the main content by replacing fragments
@@ -86,6 +91,9 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
                 break;
         }
     }

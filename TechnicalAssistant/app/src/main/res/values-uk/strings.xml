@@ -13,6 +13,7 @@
     <string name="title_section2">Мінімізація</string>
     <string name="title_section3">Нормальні форми</string>
     <string name="title_section4">Побудувати графік</string>
+    <string name="title_section5">Розв\'язати рівняння</string>
     <string name="navigation_drawer_open">Відкрити панель навігації</string>
     <string name="navigation_drawer_close">Закрити панель навігації</string>
     <string name="action_example">Проста дія</string>
@@ -35,6 +36,11 @@
     <string name="normal_forms_truth_table">Таблиця істинності:</string>
     <string name="draw">Малювати</string>
     <string name="enter_limits">Введіть межі:</string>
-    <string name="input_equation">Введіть функцію</string>
-    <string name="invalid_function">Неправильна функція!</string>
+    <string name="input_function">Введіть функцію</string>
+    <string name="invalid_function">Неправильна функція!</string>\
+
+    //EquationFragment
+    <string name="enter_equation">Введіть рівняння:</string>
+    <string name="input_equation">Введіть рівняння</string>
+    <string name="solve">Розв\'язати</string>
 </resources>
