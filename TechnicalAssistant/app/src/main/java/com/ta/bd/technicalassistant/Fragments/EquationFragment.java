@@ -18,6 +18,11 @@ import android.widget.Toast;
 
 import com.ta.bd.technicalassistant.R;
 
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
+import java.util.Vector;
+
 /**
  * Created by Vitaliy on 6/30/2015.
  */
@@ -29,6 +34,7 @@ public class EquationFragment extends Fragment
     private TextView textView_hint_text;
     private Button button;
     private EditText editText_input;
+    private EditText editText_result;
 
     @Nullable
     @Override
@@ -41,6 +47,7 @@ public class EquationFragment extends Fragment
         textView_hint_text.setMovementMethod(LinkMovementMethod.getInstance());
         button = (Button) view.findViewById(R.id.button_equation);
         editText_input = (EditText) view.findViewById(R.id.editText_equation);
+        editText_result = (EditText) view.findViewById(R.id.editText_equation_result);
 
         textView_hint.setOnClickListener(new View.OnClickListener()
         {
@@ -69,16 +76,16 @@ public class EquationFragment extends Fragment
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
-                if (editText_input.getText().toString().length() == 0)
-                {
-                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_equation) + "!", Toast.LENGTH_SHORT)
-                            .show();
-                    return false;
-                }
                 int event_action = event.getAction();
                 switch (event_action)
                 {
                     case MotionEvent.ACTION_DOWN:
+                        if (editText_input.getText().toString().length() == 0)
+                        {
+                            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_equation) + "!", Toast.LENGTH_SHORT)
+                                    .show();
+                            return false;
+                        }
                         button.setBackground(getResources().getDrawable(R.drawable.button_on_down));
                         button.callOnClick();
                         return true;
@@ -87,6 +94,39 @@ public class EquationFragment extends Fragment
                         return false;
                 }
                 return false;
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (editText_input.getText().toString().length() == 0)
+                    return;
+
+                //Wrapper (another crunch)
+                Vector<Expression> expression = new Vector<Expression>();
+                try
+                {
+                    expression.addElement(new ExpressionBuilder(editText_input.getText().toString())
+                            .variables("x")
+                            .build());
+                }
+                catch(Exception e)
+                {
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.invalid_equation), Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                editText_result.setVisibility(View.VISIBLE);
+                String set_text = "";
+                set_text += getString(R.string.result) + "\n";
+
+                //Solution
+
+
+                editText_result.setText(set_text);
             }
         });
 

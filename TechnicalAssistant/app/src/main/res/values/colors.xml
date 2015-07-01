@@ -10,4 +10,6 @@
     <color name="spoiler_background_color">#ffc9c9c9</color>
     <color name="application_background_color">#ffdedede</color>
     <color name="links_color">#ff468dd5</color>
+    <color name="action_bar_color">#ff3e3e7d</color>
+    <color name="navigation_drawer_color">#ff5b6083</color>
 </resources>

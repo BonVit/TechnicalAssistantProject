@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/graph_hint_text"
+            android:text="@string/equation_hint_text"
             android:id="@+id/textView_equation_hint_text"
             android:maxLines="0"
             style="@style/textView_spoiler_text"
@@ -85,6 +85,26 @@
         style="@style/button"
         android:gravity="center"
         android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_equation_result"
+        android:clickable="false"
+        android:editable="false"
+        android:enabled="true"
+        android:minLines="1"
+        android:scrollHorizontally="true"
+        android:saveEnabled="false"
+        android:singleLine="false"
+        android:selectAllOnFocus="false"
+        android:inputType="none"
+        android:visibility="invisible"
+        style="@style/editText_output"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"/>
 
 </LinearLayout>
 </ScrollView>

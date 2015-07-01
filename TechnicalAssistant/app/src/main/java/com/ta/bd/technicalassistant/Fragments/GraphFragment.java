@@ -96,16 +96,16 @@ public class GraphFragment extends Fragment
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
-                if (editText_input.getText().toString().length() == 0)
-                {
-                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_function) + "!", Toast.LENGTH_SHORT)
-                            .show();
-                    return false;
-                }
                 int event_action = event.getAction();
                 switch (event_action)
                 {
                     case MotionEvent.ACTION_DOWN:
+                        if (editText_input.getText().toString().length() == 0)
+                        {
+                            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.input_equation) + "!", Toast.LENGTH_SHORT)
+                                    .show();
+                            return false;
+                        }
                         button.setBackground(getResources().getDrawable(R.drawable.button_on_down));
                         button.callOnClick();
                         return true;
