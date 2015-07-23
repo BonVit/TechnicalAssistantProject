@@ -57,6 +57,7 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:editable">true</item>
         <item name="android:clickable">false</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/edit_text_input</item>
     </style>
 

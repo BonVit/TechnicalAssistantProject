@@ -156,9 +156,7 @@ public class BoolFunction
         }
         table.addElement(table_tmp);
 
-        //Different mdnf from table
-        Vector<String> result = new Vector<String>();
-        Vector<Vector<String>> terms_not_in_core = new Vector<Vector<String>>();
+        //Core
         String core = new String("");
         boolean is_colomn_in_core[] = new boolean[table_tmp[0].length - 1];
         for(int i = 1; i < table_tmp.length; i++)
@@ -172,11 +170,17 @@ public class BoolFunction
                         core += table_tmp[i][0];
                     }
             }
+
+        //Different mdnf from table
+        Vector<String> result = new Vector<String>();
+        Vector<Vector<String>> terms_not_in_core = new Vector<Vector<String>>();
         for(int i = 1; i < table_tmp.length; i++)
-            if(core.contains(table_tmp[i][0]))
-                for(int j = 1; j < table_tmp[i].length; j++)
-                    if(table_tmp[i][j] == "+" || table_tmp[i][j] == "#")
+        {
+            if (core.contains(table_tmp[i][0]))
+                for (int j = 1; j < table_tmp[i].length; j++)
+                    if (table_tmp[i][j] == "+" || table_tmp[i][j] == "#")
                         is_colomn_in_core[j - 1] = true;
+        }
         for(int i = 0; i < is_colomn_in_core.length; i++)
             if(!is_colomn_in_core[i])
             {
@@ -197,9 +201,14 @@ public class BoolFunction
                     indexs[k - 1]++;
                     k--;
                 }
+
+                if(indexs[0] >= terms_not_in_core.firstElement().size())
+                    break;
+
                 String buff = new String(core);
                 for(int i = 0; i < terms_not_in_core.size(); i++)
-                    buff += " + " + terms_not_in_core.elementAt(i).elementAt(indexs[i]);
+                    if(!buff.contains(terms_not_in_core.elementAt(i).elementAt(indexs[i])))
+                        buff += " + " + terms_not_in_core.elementAt(i).elementAt(indexs[i]);
                 result.addElement(buff);
                 indexs[indexs.length - 1]++;
             }

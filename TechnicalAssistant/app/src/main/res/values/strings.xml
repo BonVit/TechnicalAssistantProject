@@ -13,7 +13,7 @@
     <string-array name="section_titles">
         <item>Main</item>
         <item>Minimize</item>
-        <item>Normal forms</item>
+        <item>DNF and CNF</item>
         <item>Build graph</item>
         <item>Solve equation</item>
     </string-array>
@@ -49,8 +49,8 @@
     <string name="y" translatable="false">y = </string>
     <string name="draw">Draw</string>
     <string name="enter_limits">Enter limits:</string>
-    <string name="limit1" translatable="false">-10</string>
-    <string name="limit2" translatable="false">10</string>
+    <string name="graph_limit1" translatable="false">-10</string>
+    <string name="graph_limit2" translatable="false">10</string>
     <string name="invalid_function">Invalid function!</string>
 
     //EquationFragment
@@ -58,4 +58,8 @@
     <string name="input_equation">Enter equation</string>
     <string name="solve">Solve</string>
     <string name="invalid_equation">Invalid equation!</string>
+    <string name="equation_epsilon">0.001</string>
+    <string name="equation_limit1" translatable="false">-10</string>
+    <string name="equation_limit2" translatable="false">10</string>
+    <string name="enter_accuracy">Enter accuracy:</string>
 </resources>

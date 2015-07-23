@@ -107,4 +107,20 @@
         Якщо ви маєте якісь запитання, або помітили, що сервіс несправний,
             напишіть мені на <a href="mailto:bonarv96@gmail.com">пошту</a> :)
     </string>
+
+    //MainFragment
+    <string name="main_fragment_title_text">Вітаю в Технічному Помічнику!</string>
+    <string name="main_fragment_text">
+        ТП це сервіс для мінімізації логічних функцій,
+        отримання ДНФ та КНФ, побудови графіків та вирішення рівнянь.\n
+    </string>
+    <string name="main_fragment_about">
+        Про автора:
+    </string>
+    <string name="main_fragment_about_text">
+        Ім\'я: Віталій\n
+        Прізвище: Бонар\n
+        Електронна пошта: <a href="mailto:bonarv96@gmail.com">bonarv96@gmail.com</a>
+    </string>
+
 </resources>

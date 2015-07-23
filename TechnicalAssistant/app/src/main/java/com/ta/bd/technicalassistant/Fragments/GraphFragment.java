@@ -25,9 +25,6 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Vector;
 
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
-
 /**
  * Created by Vitaliy on 6/26/2015.
  */
@@ -172,10 +169,6 @@ public class GraphFragment extends Fragment
     {
         graphView.removeAllSeries();
 
-        //int dots_number = (int) ((limit2 - limit1) / STEP);
-        /*double minY = MAX_Y;
-        double maxY = MIN_Y;*/
-
         Vector<Vector<DataPoint>> dataPoints = new Vector<Vector<DataPoint>>();
         dataPoints.addElement(new Vector<DataPoint>());
         for(/*int i = 0*/; limit1 < limit2;)
@@ -194,21 +187,8 @@ public class GraphFragment extends Fragment
                 continue;
             }
 
-            /*if(dataPoints.elementAt(i).lastElement().getY() < minY)
-                minY = dataPoints.elementAt(i).lastElement().getY();
-            if(dataPoints.elementAt(i).lastElement().getY() > maxY)
-                maxY = dataPoints.elementAt(i).lastElement().getY();*/
             limit1 += STEP;
         }
-
-        /*minY = Math.floor(minY);
-        if(minY < MIN_Y)
-            minY = MIN_Y;
-        maxY = Math.ceil(maxY);
-        if(maxY > MAX_Y)
-            maxY = MAX_Y;
-        graphView.getViewport().setMinY(minY);
-        graphView.getViewport().setMaxY(maxY);*/
 
         for(int i = 0; i < dataPoints.size(); i++)
         {

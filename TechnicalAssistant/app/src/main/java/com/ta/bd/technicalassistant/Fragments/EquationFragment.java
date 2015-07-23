@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ta.bd.technicalassistant.R;
+import com.ta.bd.technicalassistant.Source.SolveEquation;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
@@ -35,6 +36,9 @@ public class EquationFragment extends Fragment
     private Button button;
     private EditText editText_input;
     private EditText editText_result;
+    private EditText editText_limit1;
+    private EditText editText_limit2;
+    private EditText editText_accuracy;
 
     @Nullable
     @Override
@@ -48,6 +52,9 @@ public class EquationFragment extends Fragment
         button = (Button) view.findViewById(R.id.button_equation);
         editText_input = (EditText) view.findViewById(R.id.editText_equation);
         editText_result = (EditText) view.findViewById(R.id.editText_equation_result);
+        editText_limit1 = (EditText) view.findViewById(R.id.editText_equation_limit1);
+        editText_limit2 = (EditText) view.findViewById(R.id.editText_equation_limit2);
+        editText_accuracy = (EditText) view.findViewById(R.id.editText_equation_epsilon);
 
         textView_hint.setOnClickListener(new View.OnClickListener()
         {
@@ -112,8 +119,7 @@ public class EquationFragment extends Fragment
                     expression.addElement(new ExpressionBuilder(editText_input.getText().toString())
                             .variables("x")
                             .build());
-                }
-                catch(Exception e)
+                } catch (Exception e)
                 {
                     Toast.makeText(getActivity().getApplicationContext(), getString(R.string.invalid_equation), Toast.LENGTH_SHORT)
                             .show();
@@ -123,8 +129,30 @@ public class EquationFragment extends Fragment
                 String set_text = "";
                 set_text += getString(R.string.result) + "\n";
 
-                //Solution
+                double limit1, limit2, eps;
+                if (editText_limit1.getText().toString().length() == 0)
+                    limit1 = Double.parseDouble(editText_limit1.getHint().toString());
+                else
+                    limit1 = Double.parseDouble(editText_limit1.getText().toString());
+                if (editText_limit2.getText().toString().length() == 0)
+                    limit2 = Double.parseDouble(editText_limit2.getHint().toString());
+                else
+                    limit2 = Double.parseDouble(editText_limit2.getText().toString());
+                if (editText_accuracy.getText().toString().length() == 0)
+                    eps = Double.parseDouble(editText_accuracy.getHint().toString());
+                else
+                    eps = Double.parseDouble(editText_accuracy.getText().toString());
 
+                Vector<Double> result;
+                //Solution
+                result = SolveEquation.iterationMethod(expression.firstElement(), limit1, limit2, eps);
+
+                for(int i = 0; i < result.size(); i++)
+                {
+                    if(i != 0)
+                        set_text += "\n";
+                    set_text += "X[" + (i + 1) + "] = " + result.elementAt(i);
+                }
 
                 editText_result.setText(set_text);
             }

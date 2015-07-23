@@ -2,15 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:weightSum="1">
+              android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="123dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_fragment_title_text"
+        android:id="@+id/textView4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.11"/>
+        android:textStyle="bold"
+        android:textIsSelectable="false"
+        android:textSize="22sp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_fragment_text"
+        android:id="@+id/textView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_fragment_about"
+        android:id="@+id/textView5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_fragment_about_text"
+        android:id="@+id/textView_about_text"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:autoLink="none"
+        android:linksClickable="true"
+        android:textColorLink="@color/links_color"
+        android:textSize="20sp"/>
 </LinearLayout>

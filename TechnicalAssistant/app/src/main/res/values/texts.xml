@@ -105,4 +105,20 @@
         If you have any questions or you noticed that it doesn\'t work correctly,
             <a href="mailto:bonarv96@gmail.com">email me</a> please :)
     </string>
+
+    //MainFragment
+    <string name="main_fragment_title_text">Welcome to Technical Assistant!</string>
+    <string name="main_fragment_text">
+        TA is a service where you can minimize boolean function,
+        get DNF and CNF, build graph and solve equation.\n
+    </string>
+    <string name="main_fragment_about">
+        About me:
+    </string>
+    <string name="main_fragment_about_text">
+        Name: Vitaliy\n
+        Last name: Bonar\n
+        E-mail: <a href="mailto:bonarv96@gmail.com">bonarv96@gmail.com</a>
+    </string>
+
 </resources>

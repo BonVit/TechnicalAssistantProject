@@ -1,5 +1,6 @@
 <resources>
     //Application
+    <string name="app_name">Технічний помічник</string>
     <string name="hint"><u>Підказка</u></string>
     <string name="symbols_entered">Символів введено: </string>
     <string name="enter_function">Введіть свою функцію:</string>
@@ -11,7 +12,7 @@
     <string-array name="section_titles">
         <item>Головна</item>
         <item>Мінімізація</item>
-        <item>Нормальні форми</item>
+        <item>ДНФ і КНФ</item>
         <item>Побудувати функцію</item>
         <item>Вирішити рівняння</item>
     </string-array>
@@ -44,5 +45,6 @@
     <string name="enter_equation">Введіть рівняння:</string>
     <string name="input_equation">Введіть рівняння</string>
     <string name="solve">Розв\'язати</string>
-    <string name="invalid_equation">Неправильне рівняння!</string>
+    <string name="invalid_equation">Неправильне рівняння!
+    </string><string name="enter_accuracy">Введіть точність:</string>
 </resources>

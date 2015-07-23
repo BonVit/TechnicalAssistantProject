@@ -89,7 +89,6 @@
             android:inputType="none"
             android:visibility="invisible"
             android:layout_below="@+id/space3"
-            android:layout_toRightOf="@+id/space2"
             android:layout_toEndOf="@+id/space2"
             android:autoText="false"
             style="@style/editText_output"/>

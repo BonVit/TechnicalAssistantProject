@@ -105,42 +105,24 @@
             android:layout_gravity="center_horizontal"
             />
 
-        <LinearLayout
+        <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:weightSum="20">
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText_normal_forms_result"
-                android:clickable="false"
-                android:editable="false"
-                android:enabled="true"
-                android:minLines="1"
-                android:nestedScrollingEnabled="false"
-                android:scrollHorizontally="true"
-                android:saveEnabled="false"
-                android:singleLine="false"
-                android:selectAllOnFocus="false"
-                android:inputType="none"
-                android:visibility="invisible"
-                android:autoText="false"
-                style="@style/editText_output"
-                android:layout_weight="18"
-                android:layout_gravity="center_horizontal"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
+            android:id="@+id/editText_normal_forms_result"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="true"
+            android:minLines="1"
+            android:nestedScrollingEnabled="false"
+            android:scrollHorizontally="true"
+            android:saveEnabled="false"
+            android:singleLine="false"
+            android:selectAllOnFocus="false"
+            android:inputType="none"
+            android:visibility="invisible"
+            android:autoText="false"
+            style="@style/editText_output"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 </ScrollView>
