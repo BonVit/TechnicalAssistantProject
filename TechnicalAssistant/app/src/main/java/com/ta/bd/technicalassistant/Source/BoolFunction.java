@@ -8,6 +8,11 @@ import java.util.Vector;
 
 public class BoolFunction
 {
+    public static final int DONT_MINIMIZE = 0;
+    public static final int MDNF = 1;
+    public static final int MKNF = 2;
+    public static final int FIND_ALL = 3;
+
     private String function;
     private String[] truth_table;
     private Vector<String> dnf;
@@ -15,6 +20,9 @@ public class BoolFunction
     private Vector<String> mdnf;
     private String[][] mdnf_log_table;
     private Vector<String> mdnf_log;
+    private Vector<String> mknf;
+    private String[][] mknf_log_table;
+    private Vector<String> mknf_log;
 
     public String[][] getMdnfLogTable()
     {
@@ -24,6 +32,21 @@ public class BoolFunction
     public Vector<String> getMdnfLog()
     {
         return mdnf_log;
+    }
+
+    public Vector<String> getMknf()
+    {
+        return mknf;
+    }
+
+    public String[][] getMknfLogTable()
+    {
+        return mknf_log_table;
+    }
+
+    public Vector<String> getMknfLog()
+    {
+        return mknf_log;
     }
 
     private static boolean equal(String term1, String term2)
@@ -241,46 +264,53 @@ public class BoolFunction
 
     public String getFunction() { return function; }
 
-    public BoolFunction(String func, boolean choose)
+    private Vector<String> mdnf_to_mknf(Vector<String> mdnf)
     {
-        function = new String(func);
-        //Create truth table
-        truth_table = new String [func.length()];
-        for(int i = 0; i < truth_table.length; i++)
-            truth_table[i] = "";
-        for(int i = 0, divider = func.length() / 2; i < Math.log(func.length()) / Math.log(2); i++, divider /= 2)
-            for(int j = 0; j < func.length(); j++)
-                if(((j / divider) & 1) == 0)
-                    truth_table[j] += '0';
-                else
-                    truth_table[j] += '1';
-        for(int i = 0; i < func.length(); i++)
-            truth_table[i] += func.charAt(i);
+        Vector<String> result = new Vector<String>();
 
-        //DNF and CNF
-        dnf = new Vector<String>();
-        cnf = new Vector<String>();
-        for(String tmp : truth_table)
-            if(tmp.charAt(tmp.length() - 1) == '1')
-                dnf.addElement(tmp.substring(0, tmp.length() - 1));
-            else
+        for(int i = 0; i < mdnf.size(); i++)
+        {
+            boolean is_first = true;
+            String new_string = new String("");
+            for(int j = 0; j < mdnf.elementAt(i).length(); j++)
             {
-                String buffer = new String("");
-                for(int j = 0; j < tmp.length() - 1; j++)
-                    if(tmp.charAt(j) == '1')
-                        buffer += '0';
-                    else
-                        buffer += '1';
-                cnf.addElement(buffer);
+                switch(mdnf.elementAt(i).charAt(j))
+                {
+                    case '0':
+                        if(is_first)
+                            new_string += "(0";
+                        else
+                            new_string += " + 0";
+                        is_first = false;
+                        break;
+                    case '1':
+                        if(is_first)
+                            new_string += "(1";
+                        else
+                            new_string += " + 1";
+                        is_first = false;
+                        break;
+                    case '-':
+                        if(is_first)
+                            new_string += "(-";
+                        else
+                            new_string += " + -";
+                        is_first = false;
+                        break;
+                    case ' ':
+                        new_string += ") * ";
+                        j+=2;
+                        is_first = true;
+                        break;
+                }
             }
-
-        //NULL
-        mdnf_log = null;
-        mdnf_log_table = null;
-        mdnf = null;
+            new_string += ")";
+            result.addElement(new_string);
+        }
+        return result;
     }
 
-    public BoolFunction(String func)
+    public BoolFunction(String func, int choose)
     {
         function = new String(func);
         //Create truth table
@@ -314,10 +344,43 @@ public class BoolFunction
             }
 
         //MDNF
-        mdnf_log = new Vector<String>();
-        mdnf_log_table = null;
-        Vector<String[][]> buffer = new Vector<String[][]>();
-        mdnf = new Vector<String>(minimize(dnf, mdnf_log, buffer));
-        mdnf_log_table = buffer.firstElement();
+        switch(choose)
+        {
+            case DONT_MINIMIZE:
+                mdnf_log = null;
+                mdnf_log_table = null;
+                mdnf = null;
+                mknf = null;
+                mknf_log = null;
+                mknf_log_table = null;
+                break;
+            case 1:
+                mdnf_log = new Vector<String>();
+                mdnf_log_table = null;
+                Vector<String[][]> mdnf_buffer = new Vector<String[][]>();
+                mdnf = new Vector<String>(minimize(dnf, mdnf_log, mdnf_buffer));
+                mdnf_log_table = mdnf_buffer.firstElement();
+                break;
+            case 2:
+                mknf_log = new Vector<String>();
+                mknf_log_table = null;
+                Vector<String[][]> mknf_buffer = new Vector<String[][]>();
+                mknf = new Vector<String>(minimize(cnf, mknf_log, mknf_buffer));
+                mknf = mdnf_to_mknf(mknf);
+                mknf_log_table = mknf_buffer.firstElement();
+                break;
+            default:
+                mdnf_log = new Vector<String>();
+                mdnf_log_table = null;
+                Vector<String[][]> mdnf_buff = new Vector<String[][]>();
+                mdnf = new Vector<String>(minimize(dnf, mdnf_log, mdnf_buff));
+                mdnf_log_table = mdnf_buff.firstElement();
+                mknf_log = new Vector<String>();
+                mknf_log_table = null;
+                Vector<String[][]> mknf_buff = new Vector<String[][]>();
+                mknf = new Vector<String>(minimize(cnf, mknf_log, mknf_buff));
+                mknf = mdnf_to_mknf(mknf);
+                mknf_log_table = mknf_buff.firstElement();
+        }
     }
 }

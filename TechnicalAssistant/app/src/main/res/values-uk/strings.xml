@@ -25,6 +25,7 @@
     <string name="input_bool_function_hint">Лише 1 та 0</string>
     <string name="minimization_solution"><u>Рішення</u></string>
     <string name="mdnf">МДНФ</string>
+    <string name="mknf">МКНФ</string>
     //Solution
     <string name="minimization_entered_function">Введена функція: </string>
     <string name="minimization_truth_table">Таблиця істинності:\n</string>
@@ -32,6 +33,8 @@
     <string name="minimization_terms"><b>Терми:\n</b></string>
     <string name="minimization_glue"> склейка:\n</string>
     <string name="quaine_matrix">\n<b>Імплікантна матриця:\n</b></string>
+    <string name="inverse_function">Знайдемо ДНФ інверсної функції:</string>
+    <string name="need_to_inverse">Для отримання результату потрібно проінвертувати всі змінні!</string>
 
     //NormalFormsFragment
     <string name="button_normal_forms">Старт</string>

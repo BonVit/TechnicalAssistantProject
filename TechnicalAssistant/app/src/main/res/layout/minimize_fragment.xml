@@ -22,11 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mdnf"
-            android:id="@+id/button_minimize"
+            android:id="@+id/button_mdnf"
             android:enabled="false"
+            style="@style/button"
             android:layout_below="@+id/textView_minimize_input_count"
-            android:layout_centerHorizontal="true"
-            style="@style/button"/>
+            android:layout_toRightOf="@+id/textView_minimization_solution"
+            android:layout_toEndOf="@+id/textView_minimization_solution"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -140,9 +141,20 @@
         <Space
             android:layout_width="20px"
             android:layout_height="20px"
-            android:layout_below="@+id/button_minimize"
+            android:layout_below="@+id/button_mdnf"
             android:layout_centerHorizontal="true"
             android:id="@+id/space3"/>
+
+        <Button
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mknf"
+            android:id="@+id/button_mknf"
+            android:enabled="false"
+            android:layout_above="@+id/space3"
+            android:layout_toRightOf="@+id/textView_minimize_input"
+            android:layout_toEndOf="@+id/textView_minimize_input"/>
 
     </RelativeLayout>
 </ScrollView>

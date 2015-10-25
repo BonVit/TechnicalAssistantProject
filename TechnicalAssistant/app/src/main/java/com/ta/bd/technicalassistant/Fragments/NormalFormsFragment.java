@@ -165,7 +165,7 @@ public class NormalFormsFragment extends Fragment
             public void onClick(View v)
             {
                 textView_truth_table.setVisibility(View.VISIBLE);
-                bool_function = new BoolFunction(editText_input.getText().toString(), true);
+                bool_function = new BoolFunction(editText_input.getText().toString(), BoolFunction.DONT_MINIMIZE);
                 String[][] data = new String[bool_function.getTruthTable().length + 1][bool_function.getTruthTable()[0].length()];
 
                 for (int i = 0; i < data[0].length - 1; i++)

@@ -17,7 +17,7 @@
         <item>Build graph</item>
         <item>Solve equation</item>
     </string-array>
-    <string-array name="sections_icons">
+    <string-array translatable="false" name="sections_icons">
         <item>@drawable/ic_main</item>
         <item>@drawable/ic_minimize</item>
         <item>@drawable/ic_forms</item>
@@ -32,6 +32,7 @@
     //MinimizeFragment
     <string name="minimization_solution"><u>Solution</u></string>
     <string name="mdnf">MDNF</string>
+    <string name="mknf">MKNF</string>
     //Solution
     <string name="minimization_entered_function">Entered function: </string>
     <string name="minimization_truth_table">Truth table:\n</string>
@@ -39,6 +40,8 @@
     <string name="minimization_terms"><b>Terms:\n</b></string>
     <string name="minimization_glue"> glue:\n</string>
     <string name="quaine_matrix">\n<b>Implicant chart:\n</b></string>
+    <string name="inverse_function">Lets find DNF of inverse function:</string>
+    <string name="need_to_inverse">To get result we need to inverse each variable!</string>
 
     //NormalFormsFragment
     <string name="button_normal_forms">Start</string>
@@ -58,7 +61,7 @@
     <string name="input_equation">Enter equation</string>
     <string name="solve">Solve</string>
     <string name="invalid_equation">Invalid equation!</string>
-    <string name="equation_epsilon">0.001</string>
+    <string translatable="false" name="equation_epsilon">0.001</string>
     <string name="equation_limit1" translatable="false">-10</string>
     <string name="equation_limit2" translatable="false">10</string>
     <string name="enter_accuracy">Enter accuracy:</string>

@@ -3,7 +3,6 @@ package com.ta.bd.technicalassistant.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
-import android.text.Selection;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
@@ -32,6 +31,7 @@ public class MinimizeFragment extends Fragment
     private EditText editText_bool_function;
     private EditText editText_minimization_result;
     private Button button_mdnf;
+    private Button button_mknf;
 
     private TextView minimize_hint;
     private TextView minimize_hint_text;
@@ -49,7 +49,8 @@ public class MinimizeFragment extends Fragment
 
         editText_bool_function = (EditText) view.findViewById(R.id.editText_input_bool_function);
         editText_minimization_result = (EditText) view.findViewById(R.id.editText_minimization_result);
-        button_mdnf = (Button) view.findViewById(R.id.button_minimize);
+        button_mdnf = (Button) view.findViewById(R.id.button_mdnf);
+        button_mknf = (Button) view.findViewById(R.id.button_mknf);
         minimize_hint = (TextView) view.findViewById(R.id.textView_minimize_hint);
         minimize_hint_text = (TextView) view.findViewById(R.id.textView_minimize_hint_text);
         minimize_hint_text.setMovementMethod(LinkMovementMethod.getInstance());
@@ -83,10 +84,12 @@ public class MinimizeFragment extends Fragment
                 {
                     minimize_input_count.setTextColor(getResources().getColor(R.color.green));
                     button_mdnf.setEnabled(true);
+                    button_mknf.setEnabled(true);
                 } else
                 {
                     minimize_input_count.setTextColor(getResources().getColor(R.color.red));
                     button_mdnf.setEnabled(false);
+                    button_mknf.setEnabled(false);
                 }
                 minimize_input_count.setText(R.string.symbols_entered);
                 minimize_input_count.append(((Integer) editText_bool_function.getText().length()).toString());
@@ -114,6 +117,27 @@ public class MinimizeFragment extends Fragment
             }
         });
 
+        //MKNF button on click animation
+        button_mknf.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                int event_action = event.getAction();
+                switch (event_action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        button_mknf.setBackground(getResources().getDrawable(R.drawable.button_on_down));
+                        button_mknf.callOnClick();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        button_mknf.setBackground(getResources().getDrawable(R.drawable.button));
+                        return false;
+                }
+                return false;
+            }
+        });
+
         //MDNF button
         button_mdnf.setOnClickListener(new View.OnClickListener()
         {
@@ -122,7 +146,22 @@ public class MinimizeFragment extends Fragment
             {
                 editText_minimization_result.setVisibility(View.VISIBLE);
                 editText_minimization_result.setText(R.string.result);
-                bool_function = new BoolFunction(editText_bool_function.getText().toString());
+
+                boolean check_func = false;
+                for (int i = 0; i < editText_bool_function.getText().toString().length(); i++)
+                    if (editText_bool_function.getText().toString().charAt(i) == '1')
+                    {
+                        check_func = true;
+                        break;
+                    }
+                if (!check_func)
+                {
+                    editText_minimization_result.setText("NULL");
+                    minimization_solution_text.setText("NULL");
+                    return;
+                }
+
+                bool_function = new BoolFunction(editText_bool_function.getText().toString(), BoolFunction.MDNF);
 
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
                     editText_minimization_result.setText(editText_minimization_result.getText().toString()
@@ -212,6 +251,126 @@ public class MinimizeFragment extends Fragment
                 set_text += "\n" + getString(R.string.result) + "\n";
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
                     set_text += getString(R.string.mdnf) + "[" + (i + 1) + "] = " + bool_function.getMdnf().elementAt(i) + "\n";
+
+                minimization_solution_text.setText(set_text);
+            }
+        });
+
+        button_mknf.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                editText_minimization_result.setVisibility(View.VISIBLE);
+                editText_minimization_result.setText(R.string.result);
+
+                boolean check_func = false;
+                for (int i = 0; i < editText_bool_function.getText().toString().length(); i++)
+                    if (editText_bool_function.getText().toString().charAt(i) == '0')
+                    {
+                        check_func = true;
+                        break;
+                    }
+                if (!check_func)
+                {
+                    editText_minimization_result.setText("NULL");
+                    minimization_solution_text.setText("NULL");
+                    return;
+                }
+
+                bool_function = new BoolFunction(editText_bool_function.getText().toString(), BoolFunction.MKNF);
+
+                for (int i = 0; i < bool_function.getMknf().size(); i++)
+                {
+                    editText_minimization_result.setText(editText_minimization_result.getText().toString()
+                            + "\n" + getString(R.string.mknf) + "[" + (i + 1) + "] = " + bool_function.getMknf().elementAt(i));
+                }
+                minimization_solution.setVisibility(View.VISIBLE);
+
+                //Log
+                String set_text = new String("");
+                set_text = getString(R.string.minimization_entered_function);
+                set_text += bool_function.getFunction() + "\n";
+                set_text += getString(R.string.minimization_truth_table);
+                for (int i = 0; i < bool_function.getTruthTable()[0].length() - 1; i++)
+                {
+                    set_text += " x" + (bool_function.getTruthTable()[i].length() - i - 1) + " |";
+                }
+                set_text += " f  |\n";
+                for (int i = 0; i < bool_function.getTruthTable().length; i++)
+                {
+                    int j;
+                    for (j = 0; j < bool_function.getTruthTable()[i].length() - 1; j++)
+                    {
+                        set_text += " " + bool_function.getTruthTable()[i].charAt(j) + "   ";
+                        set_text += "|";
+                    }
+                    set_text += " " + bool_function.getTruthTable()[i].charAt(j) + " |\n";
+                }
+                set_text += getString(R.string.inverse_function) + "\n";
+                set_text += getString(R.string.dnf) + "(!y) = ";
+                for (int i = 0; i < bool_function.getCnf().size(); i++)
+                {
+                    if (i != 0)
+                        set_text += " + ";
+                    set_text += bool_function.getCnf().elementAt(i);
+                }
+                set_text += "\n" + getString(R.string.minimization) + getString(R.string.minimization_terms);
+                for (int i = 0, choose = 1, glue = 1; i < bool_function.getMknfLog().size(); i++)
+                {
+                    if (bool_function.getMknfLog().elementAt(i) == "\n")
+                    {
+                        if (choose == 0)
+                        {
+                            set_text += "\n" + getString(R.string.minimization_terms);
+                            choose = 1;
+                        } else
+                        {
+                            set_text += glue + getString(R.string.minimization_glue);
+                            choose = 0;
+                            glue++;
+                        }
+                    } else
+                        set_text += bool_function.getMknfLog().elementAt(i);
+                }
+
+                //Quine matrix
+                set_text += getString(R.string.quaine_matrix);
+                for (int i = 0, term_len = bool_function.getMknfLogTable()[0][1].length(); i < bool_function.getMknfLogTable().length; i++)
+                {
+                    if (i == 0)
+                    {
+                        for (int j = 0; j < term_len; j++)
+                            set_text += "  ";
+                        set_text += " |";
+
+                        for (int j = 1; j < bool_function.getMknfLogTable()[i].length; j++)
+                            set_text += " " + bool_function.getMknfLogTable()[i][j] + " |";
+                        set_text += "\n";
+                        continue;
+                    }
+
+                    for (int j = 0; j < bool_function.getMknfLogTable()[i].length; j++)
+                    {
+                        set_text += " " + bool_function.getMknfLogTable()[i][j] + " ";
+                        if (j != 0)
+                        {
+                            for (int k = 0; k < term_len - 1; k++)
+                                set_text += "  ";
+                            if (j % 4 == 0)
+                                set_text += " ";
+                        }
+                        set_text += " ";
+                        set_text += "|";
+                    }
+                    set_text += "\n";
+                }
+
+                set_text += "\n" + getString(R.string.need_to_inverse) + "\n";
+                //Result
+                set_text += "\n" + getString(R.string.result) + "\n";
+                for (int i = 0; i < bool_function.getMknf().size(); i++)
+                    set_text += getString(R.string.mknf) + "[" + (i + 1) + "] = " + bool_function.getMknf().elementAt(i) + "\n";
 
                 minimization_solution_text.setText(set_text);
             }
