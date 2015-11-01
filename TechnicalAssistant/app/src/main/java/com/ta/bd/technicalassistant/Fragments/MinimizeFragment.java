@@ -164,8 +164,17 @@ public class MinimizeFragment extends Fragment
                 bool_function = new BoolFunction(editText_bool_function.getText().toString(), BoolFunction.MDNF);
 
                 for (int i = 0; i < bool_function.getMdnf().size(); i++)
+                {
+                    int price = 0;
                     editText_minimization_result.setText(editText_minimization_result.getText().toString()
                             + "\n" + getString(R.string.mdnf) + "[" + (i + 1) + "] = " + bool_function.getMdnf().elementAt(i));
+                    for(int k = 0; k < bool_function.getMdnf().elementAt(i).length(); k++)
+                        if(bool_function.getMdnf().elementAt(i).charAt(k) == '0' ||
+                                bool_function.getMdnf().elementAt(i).charAt(k) == '1')
+                            price++;
+                    editText_minimization_result.setText(editText_minimization_result.getText().toString()
+                            + "\n" + "Price[" + (i + 1) + "] = " + price);
+                }
 
                 minimization_solution.setVisibility(View.VISIBLE);
 
@@ -282,8 +291,15 @@ public class MinimizeFragment extends Fragment
 
                 for (int i = 0; i < bool_function.getMknf().size(); i++)
                 {
+                    int price = 0;
                     editText_minimization_result.setText(editText_minimization_result.getText().toString()
                             + "\n" + getString(R.string.mknf) + "[" + (i + 1) + "] = " + bool_function.getMknf().elementAt(i));
+                    for(int k = 0; k < bool_function.getMknf().elementAt(i).length(); k++)
+                        if(bool_function.getMknf().elementAt(i).charAt(k) == '0' ||
+                                bool_function.getMknf().elementAt(i).charAt(k) == '1')
+                            price++;
+                    editText_minimization_result.setText(editText_minimization_result.getText().toString()
+                            + "\n" + "Price[" + (i + 1) + "] = " + price);
                 }
                 minimization_solution.setVisibility(View.VISIBLE);
 

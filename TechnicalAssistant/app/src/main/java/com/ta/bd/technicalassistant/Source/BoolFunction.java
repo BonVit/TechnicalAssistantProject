@@ -121,9 +121,15 @@ public class BoolFunction
             //End?
             end_of_minimization = false;
             if(tmp.size() == pre_result.size())
-                for(int i = 0; i < tmp.size(); i++)
-                    if(tmp.get(i) == pre_result.get(i))
-                        end_of_minimization = true;
+            {
+                end_of_minimization = true;
+                for (int i = 0; i < tmp.size(); i++)
+                    if (tmp.elementAt(i) != pre_result.elementAt(i))
+                    {
+                        end_of_minimization = false;
+                        break;
+                    }
+            }
             if(end_of_minimization)
                 break;
 
@@ -181,6 +187,7 @@ public class BoolFunction
 
         //Core
         String core = new String("");
+        Vector<Integer> colomns_not_in_core = new Vector<Integer>();
         boolean is_colomn_in_core[] = new boolean[table_tmp[0].length - 1];
         for(int i = 1; i < table_tmp.length; i++)
             for(int j = 1; j < table_tmp[i].length; j++)
@@ -196,7 +203,7 @@ public class BoolFunction
 
         //Different mdnf from table
         Vector<String> result = new Vector<String>();
-        Vector<Vector<String>> terms_not_in_core = new Vector<Vector<String>>();
+        Vector<Vector<Term>> terms_not_in_core = new Vector<>();
         for(int i = 1; i < table_tmp.length; i++)
         {
             if (core.contains(table_tmp[i][0]))
@@ -207,10 +214,24 @@ public class BoolFunction
         for(int i = 0; i < is_colomn_in_core.length; i++)
             if(!is_colomn_in_core[i])
             {
-                terms_not_in_core.addElement(new Vector<String>());
-                for(int j = 1; j < table_tmp.length; j++)
+                colomns_not_in_core.addElement(i + 1);
+                terms_not_in_core.addElement(new Vector<Term>());
+                String temporary = new String("");
+
+                for (int j = 1; j < table_tmp.length; j++)
                     if (table_tmp[j][i + 1] == "#")
-                        terms_not_in_core.lastElement().addElement(table_tmp[j][0]);
+                    {
+                        Term new_term = new Term();
+                        new_term.setValue(table_tmp[j][0]);
+                        new_term.setNum(j);
+                        Vector<Integer> new_term_nums_of_colomns = new Vector<Integer>();
+                        for(int k = 1; k < table_tmp[j].length; k++)
+                            if(table_tmp[j][k] == "+" || table_tmp[j][k] == "#")
+                                new_term_nums_of_colomns.addElement(k);
+                        new_term.setNumOfColomns(new_term_nums_of_colomns);
+
+                        terms_not_in_core.lastElement().addElement(new_term);
+                    }
             }
         int indexs[] = new int [terms_not_in_core.size()];
         if(indexs.length > 0)
@@ -229,10 +250,17 @@ public class BoolFunction
                     break;
 
                 String buff = new String(core);
+                Vector<Integer> added_colomns = new Vector<Integer>();
                 for(int i = 0; i < terms_not_in_core.size(); i++)
-                    if(!buff.contains(terms_not_in_core.elementAt(i).elementAt(indexs[i])))
-                        buff += " + " + terms_not_in_core.elementAt(i).elementAt(indexs[i]);
-                result.addElement(buff);
+                {
+                    if(!added_colomns.contains(colomns_not_in_core.elementAt(i)))
+                    {
+                        buff += " + " + terms_not_in_core.elementAt(i).elementAt(indexs[i]).getValue();
+                        added_colomns.addAll(terms_not_in_core.elementAt(i).elementAt(indexs[i]).getNumOfColomns());
+                    }
+                }
+                if(!result.contains(buff))
+                    result.addElement(buff);
                 indexs[indexs.length - 1]++;
             }
         }
@@ -382,5 +410,42 @@ public class BoolFunction
                 mknf = mdnf_to_mknf(mknf);
                 mknf_log_table = mknf_buff.firstElement();
         }
+    }
+}
+
+class Term
+{
+    private String value;
+    private int num;
+    private Vector<Integer> num_of_colomns;
+
+    public String getValue()
+    {
+        return value;
+    }
+
+    public void setValue(String value)
+    {
+        this.value = value;
+    }
+
+    public int getNum()
+    {
+        return num;
+    }
+
+    public void setNum(int num)
+    {
+        this.num = num;
+    }
+
+    public Vector<Integer> getNumOfColomns()
+    {
+        return num_of_colomns;
+    }
+
+    public void setNumOfColomns(Vector<Integer> num_of_colomns)
+    {
+        this.num_of_colomns = num_of_colomns;
     }
 }

@@ -90,7 +90,8 @@
             android:inputType="none"
             android:visibility="invisible"
             android:layout_below="@+id/space3"
-            android:layout_toEndOf="@+id/space2"
+            android:layout_alignLeft="@+id/space2"
+            android:layout_alignRight="@+id/space"
             android:autoText="false"
             style="@style/editText_output"/>
 
@@ -155,6 +156,14 @@
             android:layout_above="@+id/space3"
             android:layout_toRightOf="@+id/textView_minimize_input"
             android:layout_toEndOf="@+id/textView_minimize_input"/>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/space"/>
 
     </RelativeLayout>
 </ScrollView>
